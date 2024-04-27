@@ -1,4 +1,4 @@
-<h1>Show User</h1>
+<h1>ユーザー詳細</h1>
 
 <%= if @live_action in [:edit] do %>
   <.modal return_to={Routes.user_show_path(@socket, :show, @user)}>
@@ -14,10 +14,25 @@
 <% end %>
 
 <ul>
-
   <li>
-    <strong>Name:</strong>
+    <strong>写真:</strong>
+    <div>顔画像のエリア</div>
+  </li>
+  <li>
+    <strong>ID:</strong>
+    <%= @user.id %>
+  </li>
+  <li>
+    <strong>名前:</strong>
     <%= @user.name %>
+  </li>
+  <li>
+    <strong>職業:</strong>
+    <%= @user.job %>
+  </li>
+  <li>
+    <strong>出身地:</strong>
+    <%= @user.birth_pref %>
   </li>
 
 </ul>
