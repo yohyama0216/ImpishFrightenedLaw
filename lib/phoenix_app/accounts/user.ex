@@ -4,7 +4,9 @@ defmodule PhoenixApp.Accounts.User do
 
   schema "users" do
     field :name, :string
-
+    field :job, :string
+    field :age, :integer
+    field :birth_pref, :string
     timestamps()
   end
 

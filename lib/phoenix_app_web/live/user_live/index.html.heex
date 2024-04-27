@@ -32,11 +32,11 @@
           <span><%= live_patch "編集", to: Routes.user_index_path(@socket, :edit, user) %></span>
           <span><%= link "削除", to: "#", phx_click: "delete", phx_value_id: user.id, data: [confirm: "Are you sure?"] %></span>
         </td>
-        <td>11111</td>
+        <td><%= user.id %></td>
           <td><%= user.name %></td>
-          <td>会社員</td>
-          <td>32</td>
-          <td>北海道</td>
+          <td><%= user.job %></td>
+          <td><%= user.age %></td>
+          <td><%= user.birth_pref %></td>
       </tr>
     <% end %>
   </tbody>
