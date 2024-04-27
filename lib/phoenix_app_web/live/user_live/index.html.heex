@@ -1,4 +1,4 @@
-<h1>Listing Users</h1>
+<h1>ユーザー一覧</h1>
 
 <%= if @live_action in [:new, :edit] do %>
   <.modal return_to={Routes.user_index_path(@socket, :index)}>
@@ -12,25 +12,31 @@
     />
   </.modal>
 <% end %>
-
+<!-- デザイン調整する -->
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-
       <th></th>
+      <th>ID</th>
+      <th>名前</th>
+      <th>職業</th>
+      <th>年齢</th>
+      <th>出身地</th>
     </tr>
   </thead>
   <tbody id="users">
     <%= for user <- @users do %>
       <tr id={"user-#{user.id}"}>
-        <td><%= user.name %></td>
-
         <td>
-          <span><%= live_redirect "Show", to: Routes.user_show_path(@socket, :show, user) %></span>
-          <span><%= live_patch "Edit", to: Routes.user_index_path(@socket, :edit, user) %></span>
-          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: user.id, data: [confirm: "Are you sure?"] %></span>
+          <span><%= live_redirect "詳細", to: Routes.user_show_path(@socket, :show, user) %></span>
+          <span><%= live_patch "編集", to: Routes.user_index_path(@socket, :edit, user) %></span>
+          <span><%= link "削除", to: "#", phx_click: "delete", phx_value_id: user.id, data: [confirm: "Are you sure?"] %></span>
         </td>
+        <td>11111</td>
+          <td><%= user.name %></td>
+          <td>会社員</td>
+          <td>32</td>
+          <td>北海道</td>
       </tr>
     <% end %>
   </tbody>
