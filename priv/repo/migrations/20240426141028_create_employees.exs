@@ -3,10 +3,18 @@ defmodule PhoenixApp.Repo.Migrations.CreateEmployees do
 
   def change do
     create table(:employees) do
-      add :name, :string
-      add :job, :string
-      add :age, :integer
-      add :birth_pref, :string
+      add :employee_id, :string, primary_key: true
+      add :first_name, :string
+      add :last_name, :string
+      add :email, :string
+      add :phone_number, :string
+      add :job_title, :string
+      add :department, :string
+      add :salary, :decimal
+      add :hire_date, :date
+      add :birth_date, :date
+      add :status, :string
+      
       timestamps()
     end
   end

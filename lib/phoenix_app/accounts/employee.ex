@@ -3,10 +3,18 @@ defmodule PhoenixApp.Accounts.Employee do
   import Ecto.Changeset
 
   schema "employees" do
-    field :name, :string
-    field :job, :string
-    field :age, :integer
-    field :birth_pref, :string
+    field :employee_id, :string
+    field :first_name, :string
+    field :last_name, :string
+    field :email, :string
+    field :phone_number, :string
+    field :job_title, :string
+    field :department, :string
+    field :salary, :decimal
+    field :hire_date, :date
+    field :birth_date, :date
+    field :status, :string
+    
     timestamps()
   end
 
