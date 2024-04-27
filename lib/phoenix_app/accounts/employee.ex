@@ -1,8 +1,8 @@
-defmodule PhoenixApp.Accounts.User do
+defmodule PhoenixApp.Accounts.Employee do
   use Ecto.Schema
   import Ecto.Changeset
 
-  schema "users" do
+  schema "employees" do
     field :name, :string
     field :job, :string
     field :age, :integer
@@ -11,8 +11,8 @@ defmodule PhoenixApp.Accounts.User do
   end
 
   @doc false
-  def changeset(user, attrs) do
-    user
+  def changeset(employee, attrs) do
+    employee
     |> cast(attrs, [:name])
     |> validate_required([:name])
   end

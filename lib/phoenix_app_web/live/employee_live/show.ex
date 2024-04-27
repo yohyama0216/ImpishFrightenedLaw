@@ -1,4 +1,4 @@
-defmodule PhoenixAppWeb.UserLive.Show do
+defmodule PhoenixAppWeb.EmployeeLive.Show do
   use PhoenixAppWeb, :live_view
 
   alias PhoenixApp.Accounts
@@ -13,9 +13,9 @@ defmodule PhoenixAppWeb.UserLive.Show do
     {:noreply,
      socket
      |> assign(:page_title, page_title(socket.assigns.live_action))
-     |> assign(:user, Accounts.get_user!(id))}
+     |> assign(:employee, Accounts.get_employee!(id))}
   end
 
-  defp page_title(:show), do: "Show User"
-  defp page_title(:edit), do: "Edit User"
+  defp page_title(:show), do: "Show Employee"
+  defp page_title(:edit), do: "Edit Employee"
 end

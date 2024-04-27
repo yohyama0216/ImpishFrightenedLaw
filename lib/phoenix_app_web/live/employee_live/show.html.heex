@@ -1,0 +1,41 @@
+<h1>ユーザー詳細</h1>
+
+<%= if @live_action in [:edit] do %>
+  <.modal return_to={Routes.employee_show_path(@socket, :show, @employee)}>
+    <.live_component
+      module={PhoenixAppWeb.EmployeeLive.FormComponent}
+      id={@employee.id}
+      title={@page_title}
+      action={@live_action}
+      employee={@employee}
+      return_to={Routes.employee_show_path(@socket, :show, @employee)}
+    />
+  </.modal>
+<% end %>
+
+<ul>
+  <li>
+    <strong>写真:</strong>
+    <div>顔画像のエリア</div>
+  </li>
+  <li>
+    <strong>ID:</strong>
+    <%= @employee.id %>
+  </li>
+  <li>
+    <strong>名前:</strong>
+    <%= @employee.name %>
+  </li>
+  <li>
+    <strong>職業:</strong>
+    <%= @employee.job %>
+  </li>
+  <li>
+    <strong>出身地:</strong>
+    <%= @employee.birth_pref %>
+  </li>
+
+</ul>
+
+<span><%= live_patch "Edit", to: Routes.employee_show_path(@socket, :edit, @employee), class: "button" %></span> |
+<span><%= live_redirect "Back", to: Routes.employee_index_path(@socket, :index) %></span>

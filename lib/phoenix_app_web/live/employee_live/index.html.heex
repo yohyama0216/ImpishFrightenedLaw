@@ -1,0 +1,45 @@
+<div class="container mt-4">
+  <h1>ユーザー一覧</h1>
+  
+  <%= if @live_action in [:new, :edit] do %>
+    <.modal return_to={Routes.employee_index_path(@socket, :index)}>
+      <.live_component
+        module={PhoenixAppWeb.EmployeeLive.FormComponent}
+        id={@employee.id || :new}
+        title={@page_title}
+        action={@live_action}
+        employee={@employee}
+        return_to={Routes.employee_index_path(@socket, :index)}
+      />
+    </.modal>
+  <% end %>
+
+  <table class="table table-hover">
+    <thead>
+        <tr>
+            <th>操作</th>
+            <th>ID</th>
+            <th>名前</th>
+            <th>職業</th>
+            <th>年齢</th>
+            <th>出身地</th>
+        </tr>
+    </thead>
+    <tbody id="employees">
+        <%= for employee <- @employees do %>
+        <tr id={"employee-#{employee.id}"}>
+            <td>
+                <a href={Routes.employee_show_path(@socket, :show, employee)} class="btn btn-info btn-sm">詳細</a>
+                <a href={Routes.employee_index_path(@socket, :edit, employee)} class="btn btn-primary btn-sm">編集</a>
+                <a href="#" class="btn btn-danger btn-sm" phx-click="delete" phx-value-id={employee.id} data-confirm="Are you sure?">削除</a>
+            </td>
+            <td><%= employee.id %></td>
+            <td><%= employee.name %></td>
+            <td><%= employee.job %></td>
+            <td><%= employee.age %></td>
+            <td><%= employee.birth_pref %></td>
+        </tr>
+        <% end %>
+    </tbody>
+  </table>
+</div>

@@ -6,99 +6,99 @@ defmodule PhoenixApp.Accounts do
   import Ecto.Query, warn: false
   alias PhoenixApp.Repo
 
-  alias PhoenixApp.Accounts.User
+  alias PhoenixApp.Accounts.Employee
 
   @doc """
-  Returns the list of users.
+  Returns the list of employees.
 
   ## Examples
 
-      iex> list_users()
-      [%User{}, ...]
+      iex> list_employees()
+      [%Employee{}, ...]
 
   """
-  def list_users do
-    Repo.all(User)
+  def list_employees do
+    Repo.all(Employee)
   end
 
   @doc """
-  Gets a single user.
+  Gets a single employee.
 
-  Raises `Ecto.NoResultsError` if the User does not exist.
+  Raises `Ecto.NoResultsError` if the Employee does not exist.
 
   ## Examples
 
-      iex> get_user!(123)
-      %User{}
+      iex> get_employee!(123)
+      %Employee{}
 
-      iex> get_user!(456)
+      iex> get_employee!(456)
       ** (Ecto.NoResultsError)
 
   """
-  def get_user!(id), do: Repo.get!(User, id)
+  def get_employee!(id), do: Repo.get!(Employee, id)
 
   @doc """
-  Creates a user.
+  Creates a employee.
 
   ## Examples
 
-      iex> create_user(%{field: value})
-      {:ok, %User{}}
+      iex> create_employee(%{field: value})
+      {:ok, %Employee{}}
 
-      iex> create_user(%{field: bad_value})
+      iex> create_employee(%{field: bad_value})
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_user(attrs \\ %{}) do
-    %User{}
-    |> User.changeset(attrs)
+  def create_employee(attrs \\ %{}) do
+    %Employee{}
+    |> Employee.changeset(attrs)
     |> Repo.insert()
   end
 
   @doc """
-  Updates a user.
+  Updates a employee.
 
   ## Examples
 
-      iex> update_user(user, %{field: new_value})
-      {:ok, %User{}}
+      iex> update_employee(employee, %{field: new_value})
+      {:ok, %Employee{}}
 
-      iex> update_user(user, %{field: bad_value})
+      iex> update_employee(employee, %{field: bad_value})
       {:error, %Ecto.Changeset{}}
 
   """
-  def update_user(%User{} = user, attrs) do
-    user
-    |> User.changeset(attrs)
+  def update_employee(%Employee{} = employee, attrs) do
+    employee
+    |> Employee.changeset(attrs)
     |> Repo.update()
   end
 
   @doc """
-  Deletes a user.
+  Deletes a employee.
 
   ## Examples
 
-      iex> delete_user(user)
-      {:ok, %User{}}
+      iex> delete_employee(employee)
+      {:ok, %Employee{}}
 
-      iex> delete_user(user)
+      iex> delete_employee(employee)
       {:error, %Ecto.Changeset{}}
 
   """
-  def delete_user(%User{} = user) do
-    Repo.delete(user)
+  def delete_employee(%Employee{} = employee) do
+    Repo.delete(employee)
   end
 
   @doc """
-  Returns an `%Ecto.Changeset{}` for tracking user changes.
+  Returns an `%Ecto.Changeset{}` for tracking employee changes.
 
   ## Examples
 
-      iex> change_user(user)
-      %Ecto.Changeset{data: %User{}}
+      iex> change_employee(employee)
+      %Ecto.Changeset{data: %Employee{}}
 
   """
-  def change_user(%User{} = user, attrs \\ %{}) do
-    User.changeset(user, attrs)
+  def change_employee(%Employee{} = employee, attrs \\ %{}) do
+    Employee.changeset(employee, attrs)
   end
 end

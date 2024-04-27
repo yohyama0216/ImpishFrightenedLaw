@@ -18,12 +18,12 @@ defmodule PhoenixAppWeb.Router do
   scope "/", PhoenixAppWeb do
     pipe_through :browser
 
-    live "/users", UserLive.Index, :index
-    live "/users/new", UserLive.Index, :new
-    live "/users/:id/edit", UserLive.Index, :edit
+    live "/employees", EmployeeLive.Index, :index
+    live "/employees/new", EmployeeLive.Index, :new
+    live "/employees/:id/edit", EmployeeLive.Index, :edit
 
-    live "/users/:id", UserLive.Show, :show
-    live "/users/:id/show/edit", UserLive.Show, :edit
+    live "/employees/:id", EmployeeLive.Show, :show
+    live "/employees/:id/show/edit", EmployeeLive.Show, :edit
 
     get "/", PageController, :index
   end
