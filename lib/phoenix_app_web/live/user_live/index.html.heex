@@ -1,45 +1,45 @@
-<h1>ユーザー一覧</h1>
+<div class="container mt-4">
+  <h1>ユーザー一覧</h1>
+  
+  <%= if @live_action in [:new, :edit] do %>
+    <.modal return_to={Routes.user_index_path(@socket, :index)}>
+      <.live_component
+        module={PhoenixAppWeb.UserLive.FormComponent}
+        id={@user.id || :new}
+        title={@page_title}
+        action={@live_action}
+        user={@user}
+        return_to={Routes.user_index_path(@socket, :index)}
+      />
+    </.modal>
+  <% end %>
 
-<%= if @live_action in [:new, :edit] do %>
-  <.modal return_to={Routes.user_index_path(@socket, :index)}>
-    <.live_component
-      module={PhoenixAppWeb.UserLive.FormComponent}
-      id={@user.id || :new}
-      title={@page_title}
-      action={@live_action}
-      user={@user}
-      return_to={Routes.user_index_path(@socket, :index)}
-    />
-  </.modal>
-<% end %>
-<!-- デザイン調整する -->
-<table>
-  <thead>
-    <tr>
-      <th></th>
-      <th>ID</th>
-      <th>名前</th>
-      <th>職業</th>
-      <th>年齢</th>
-      <th>出身地</th>
-    </tr>
-  </thead>
-  <tbody id="users">
-    <%= for user <- @users do %>
-      <tr id={"user-#{user.id}"}>
-        <td>
-          <span><%= live_redirect "詳細", to: Routes.user_show_path(@socket, :show, user) %></span>
-          <span><%= live_patch "編集", to: Routes.user_index_path(@socket, :edit, user) %></span>
-          <span><%= link "削除", to: "#", phx_click: "delete", phx_value_id: user.id, data: [confirm: "Are you sure?"] %></span>
-        </td>
-        <td><%= user.id %></td>
-          <td><%= user.name %></td>
-          <td><%= user.job %></td>
-          <td><%= user.age %></td>
-          <td><%= user.birth_pref %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<span></span>
+  <table class="table table-hover">
+    <thead>
+        <tr>
+            <th>操作</th>
+            <th>ID</th>
+            <th>名前</th>
+            <th>職業</th>
+            <th>年齢</th>
+            <th>出身地</th>
+        </tr>
+    </thead>
+    <tbody id="users">
+        <%= for user <- @users do %>
+        <tr id={"user-#{user.id}"}>
+            <td>
+                <a href={Routes.user_show_path(@socket, :show, user)} class="btn btn-info btn-sm">詳細</a>
+                <a href={Routes.user_index_path(@socket, :edit, user)} class="btn btn-primary btn-sm">編集</a>
+                <a href="#" class="btn btn-danger btn-sm" phx-click="delete" phx-value-id={user.id} data-confirm="Are you sure?">削除</a>
+            </td>
+            <td><%= user.id %></td>
+            <td><%= user.name %></td>
+            <td><%= user.job %></td>
+            <td><%= user.age %></td>
+            <td><%= user.birth_pref %></td>
+        </tr>
+        <% end %>
+    </tbody>
+  </table>
+</div>
