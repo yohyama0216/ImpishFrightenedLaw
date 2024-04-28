@@ -1,11 +1,11 @@
 <div class="container mt-4">
-  <h1>ユーザー一覧</h1>
+  <h1>社員一覧</h1>
   
   <%= if @live_action in [:new, :edit] do %>
     <.modal return_to={Routes.employee_index_path(@socket, :index)}>
       <.live_component
         module={PhoenixAppWeb.EmployeeLive.FormComponent}
-        id={@employee.id || :new}
+        id={@employee.employee_id || :new}
         title={@page_title}
         action={@live_action}
         employee={@employee}
@@ -19,25 +19,31 @@
         <tr>
             <th>操作</th>
             <th>ID</th>
-            <th>名前</th>
-            <th>職業</th>
-            <th>年齢</th>
-            <th>出身地</th>
+            <th>姓名</th>
+            <th>電話番号</th>
+            <th>Email</th>
+            <th>職位</th>
+            <th>部署</th>
+            <th>雇用開始日</th>
+            <th>状態</th>
         </tr>
     </thead>
     <tbody id="employees">
         <%= for employee <- @employees do %>
-        <tr id={"employee-#{employee.id}"}>
+        <tr id={"employee-#{employee.employee_id}"}>
             <td>
                 <a href={Routes.employee_show_path(@socket, :show, employee)} class="btn btn-info btn-sm">詳細</a>
                 <a href={Routes.employee_index_path(@socket, :edit, employee)} class="btn btn-primary btn-sm">編集</a>
-                <a href="#" class="btn btn-danger btn-sm" phx-click="delete" phx-value-id={employee.id} data-confirm="Are you sure?">削除</a>
+                <a href="#" class="btn btn-danger btn-sm" phx-click="delete" phx-value-id={employee.employee_id} data-confirm="Are you sure?">削除</a>
             </td>
-            <td><%= employee.id %></td>
-            <td><%= employee.name %></td>
-            <td><%= employee.job %></td>
-            <td><%= employee.age %></td>
-            <td><%= employee.birth_pref %></td>
+            <td><%= employee.employee_id %></td>
+            <td><%= employee.first_name %> <%= employee.last_name %></td>
+            <td><%= employee.phone_number %></td>
+            <td><%= employee.email %></td>
+            <td><%= employee.job_title %></td>
+            <td><%= employee.department %></td>
+            <td><%= employee.hire_date %></td>
+            <td><%= employee.status %></td>
         </tr>
         <% end %>
     </tbody>

@@ -1,10 +1,10 @@
-<h1>ユーザー詳細</h1>
+<h1>社員詳細</h1>
 
 <%= if @live_action in [:edit] do %>
   <.modal return_to={Routes.employee_show_path(@socket, :show, @employee)}>
     <.live_component
       module={PhoenixAppWeb.EmployeeLive.FormComponent}
-      id={@employee.id}
+      id={@employee.employee_id}
       title={@page_title}
       action={@live_action}
       employee={@employee}
@@ -23,18 +23,26 @@
     <%= @employee.id %>
   </li>
   <li>
-    <strong>名前:</strong>
-    <%= @employee.name %>
+    <strong>姓名:</strong>
+    <%= @employee.last_name %> <%= @employee.first_name %>
   </li>
   <li>
-    <strong>職業:</strong>
-    <%= @employee.job %>
+    <strong>職位:</strong>
+    <%= @employee.job_title %>
   </li>
   <li>
-    <strong>出身地:</strong>
-    <%= @employee.birth_pref %>
+    <strong>生年月日:</strong>
+    <%= @employee.birth_date %>
   </li>
-
+<th>ID</th>
+<th>姓名</th>
+<th>電話番号</th>
+<th>Email</th>
+<th>職位</th>
+<th>部署</th>
+<th>雇用開始日</th>
+<th>生年月日</th>
+<th>状態</th>
 </ul>
 
 <span><%= live_patch "Edit", to: Routes.employee_show_path(@socket, :edit, @employee), class: "button" %></span> |
