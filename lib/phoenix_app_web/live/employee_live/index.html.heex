@@ -24,7 +24,6 @@
             <th>Email</th>
             <th>職位</th>
             <th>部署</th>
-            <th>雇用開始日</th>
             <th>状態</th>
         </tr>
     </thead>
@@ -42,8 +41,7 @@
             <td><%= employee.email %></td>
             <td><%= employee.job_title %></td>
             <td><%= employee.department %></td>
-            <td><%= employee.hire_date %></td>
-            <td><%= employee.status %></td>
+            <td><%= status_label(employee.status) %></td>
         </tr>
         <% end %>
     </tbody>

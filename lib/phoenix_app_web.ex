@@ -39,6 +39,7 @@ defmodule PhoenixAppWeb do
 
       # Include shared imports and aliases for views
       unquote(view_helpers())
+      import PhoenixAppWeb.Helpers.StatusHelper
     end
   end
 

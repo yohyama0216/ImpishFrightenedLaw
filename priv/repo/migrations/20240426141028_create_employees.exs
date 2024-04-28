@@ -3,7 +3,7 @@ defmodule PhoenixApp.Repo.Migrations.CreateEmployees do
 
   def change do
     create table(:employees) do
-      add :employee_id, :string, primary_key: true
+      add :employee_id, :string, null: false
       add :first_name, :string
       add :last_name, :string
       add :email, :string
@@ -13,9 +13,12 @@ defmodule PhoenixApp.Repo.Migrations.CreateEmployees do
       add :salary, :decimal
       add :hire_date, :date
       add :birth_date, :date
-      add :status, :string
-      
+      add :status, :integer
+
       timestamps()
     end
+
+    # Add a unique index on the employee_id column
+    create unique_index(:employees, [:employee_id])
   end
 end

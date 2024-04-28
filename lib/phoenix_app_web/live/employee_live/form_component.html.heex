@@ -8,13 +8,19 @@
     phx-target={@myself}
     phx-change="validate"
     phx-submit="save">
-  
-    <%= label f, :name %>
-    <%= text_input f, :name %>
-    <%= error_tag f, :name %>
+
+    <%= label f, :employee_id %>
+    <%= text_input f, :employee_id %>
+    <%= error_tag f, :employee_id %>
+    <%= label f, :first_name %>
+    <%= text_input f, :first_name %>
+    <%= error_tag f, :first_name %>
+    <%= label f, :last_name %>
+    <%= text_input f, :last_name %>
+    <%= error_tag f, :last_name %>
   
     <div>
-      <%= submit "Save", phx_disable_with: "Saving..." %>
+      <%= submit "登録", phx_disable_with: "登録しています..." %>
     </div>
   </.form>
 </div>

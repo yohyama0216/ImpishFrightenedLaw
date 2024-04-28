@@ -1,6 +1,8 @@
 defmodule PhoenixAppWeb.EmployeeLive.Index do
   use PhoenixAppWeb, :live_view
 
+  import PhoenixAppWeb.Helpers.StatusHelper
+
   alias PhoenixApp.Accounts
   alias PhoenixApp.Accounts.Employee
 
