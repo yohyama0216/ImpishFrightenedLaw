@@ -17,31 +17,29 @@
   <table class="table table-hover">
     <thead>
         <tr>
-            <th>操作</th>
-            <th>ID</th>
-            <th>姓名</th>
-            <th>電話番号</th>
-            <th>Email</th>
-            <th>職位</th>
-            <th>部署</th>
-            <th>状態</th>
+            <th><i class="fas fa-camera"></i> 顔写真</th>
+            <th><i class="fas fa-info-circle"></i> 概要</th>
+            <th><i class="fas fa-thermometer-half"></i> 状態</th>
+            <th><i class="fas fa-tools"></i> 操作</th>
         </tr>
     </thead>
     <tbody id="employees">
         <%= for employee <- @employees do %>
         <tr id={"employee-#{employee.employee_id}"}>
             <td>
-                <a href={Routes.employee_show_path(@socket, :show, employee)} class="btn btn-info btn-sm">詳細</a>
-                <a href={Routes.employee_index_path(@socket, :edit, employee)} class="btn btn-primary btn-sm">編集</a>
-                <a href="#" class="btn btn-danger btn-sm" phx-click="delete" phx-value-id={employee.employee_id} data-confirm="Are you sure?">削除</a>
+                <a href="#"><img src=""></a>
             </td>
-            <td><%= employee.employee_id %></td>
-            <td><%= employee.first_name %> <%= employee.last_name %></td>
-            <td><%= employee.phone_number %></td>
-            <td><%= employee.email %></td>
-            <td><%= employee.job_title %></td>
-            <td><%= employee.department %></td>
+            <td>
+                <a href={"/users/#{employee.employee_id}"}><%= employee.first_name %> <%= employee.last_name %></a><br/>
+                <i class="fas fa-briefcase"></i> <%= employee.department %> <i class="fas fa-user-tie"></i><%= employee.job_title %><br/>
+                <i class="fas fa-envelope"></i> <%= employee.email %> <i class="fas fa-phone"></i> <%= employee.phone_number %>
+            </td>
             <td><%= status_label(employee.status) %></td>
+            <td>
+                <a href={Routes.employee_show_path(@socket, :show, employee)} class="btn btn-info btn-sm"><i class="far fa-eye"></i> 詳細</a>
+                <a href={Routes.employee_index_path(@socket, :edit, employee)} class="btn btn-primary btn-sm"><i class="fas fa-pencil-alt"></i> 編集</a>
+                <a href="#" class="btn btn-danger btn-sm" phx-click="delete" phx-value-id={employee.employee_id} data-confirm="Are you sure?"><i class="far fa-trash-alt"></i> 削除</a>
+            </td>
         </tr>
         <% end %>
     </tbody>
