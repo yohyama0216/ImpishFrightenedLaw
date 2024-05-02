@@ -1,0 +1,30 @@
+<h1>Listing Certifications</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Acquired date</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for certification <- @certifications do %>
+    <tr>
+      <td><%= certification.name %></td>
+      <td><%= certification.description %></td>
+      <td><%= certification.acquired_date %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.certification_path(@conn, :show, certification) %></span>
+        <span><%= link "Edit", to: Routes.certification_path(@conn, :edit, certification) %></span>
+        <span><%= link "Delete", to: Routes.certification_path(@conn, :delete, certification), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Certification", to: Routes.certification_path(@conn, :new) %></span>

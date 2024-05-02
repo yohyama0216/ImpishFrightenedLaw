@@ -25,6 +25,8 @@ defmodule PhoenixAppWeb.Router do
     live "/employees/:id", EmployeeLive.Show, :show
     live "/employees/:id/show/edit", EmployeeLive.Show, :edit
 
+    resources "/certifications", CertificationController
+
     get "/", PageController, :index
   end
 

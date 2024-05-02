@@ -1,0 +1,23 @@
+<h1>Show Certification</h1>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @certification.name %>
+  </li>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @certification.description %>
+  </li>
+
+  <li>
+    <strong>Acquired date:</strong>
+    <%= @certification.acquired_date %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.certification_path(@conn, :edit, @certification) %></span> |
+<span><%= link "Back", to: Routes.certification_path(@conn, :index) %></span>
